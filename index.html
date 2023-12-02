@@ -4,78 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom 3D Model</title>
+    <title>Your Gothic Letters Webpage</title>
 
     <style>
         body {
-            margin: 0;
-            overflow: hidden;
+            font-family: 'Gothic', sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #gothic-letters {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        #image-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        #image-container img {
+            max-width: 100%;
+            max-height: 80vh;
         }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>sukablya</h1>
-    </header>
+    <div id="gothic-letters">
+        MILS
+    </div>
 
-    <main>
-        <div id="model-container"></div>
-    </main>
-
-    <footer>
-        &copy; 2023 Your Website. All rights reserved.
-    </footer>
-
-    <!-- Include Three.js library -->
-    <script src="https://threejs.org/build/three.js"></script>
-
-    <!-- Include GLTFLoader from Three.js -->
-    <script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
-
-    <script>
-        // Initialize Three.js scene
-        var scene = new THREE.Scene();
-
-        // Set up camera
-        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-
-        // Set up renderer
-        var renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-
-        // Append renderer to the container
-        document.getElementById('model-container').appendChild(renderer.domElement);
-
-        // Load your custom 3D model (replace 'your_model.glb' with the actual path to your model)
-        var loader = new THREE.GLTFLoader();
-        loader.load('cube.glb', function (gltf) {
-            // Add the loaded model to the scene
-            scene.add(gltf.scene);
-        });
-
-        // Set up camera position
-        camera.position.z = 5;
-
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-
-            // Rotate the model
-            scene.children.forEach(function (child) {
-                if (child.isMesh) {
-                    child.rotation.x += 0.01;
-                    child.rotation.y += 0.01;
-                }
-            });
-
-            renderer.render(scene, camera);
-        }
-
-        // Start the animation loop
-        animate();
-    </script>
+    <div id="image-container">
+        <img src="shroom2png.png" alt="eat me">
+    </div>
 
 </body>
 
