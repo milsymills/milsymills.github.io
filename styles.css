@@ -1,15 +1,13 @@
 /* styles.css */
 
-/* styles.css */
-
 body {
-    font-family: 'New Gothic Style', sans-serif;
+    font-family: 'Trattatello', fantasy, sans-serif;
     text-align: center;
     margin: 50px;
 }
 
 #gothic-letters {
-    font-family: 'New Gothic Style', sans-serif;
+    font-family: 'Trattatello', fantasy, sans-serif;
     font-size: 4em; /* Increase font size */
     margin-bottom: 20px;
 }
