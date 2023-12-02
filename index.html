@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your 3D Model Website</title>
+    <title>Custom 3D Model</title>
 
     <style>
         body {
@@ -31,6 +31,9 @@
     <!-- Include Three.js library -->
     <script src="https://threejs.org/build/three.js"></script>
 
+    <!-- Include GLTFLoader from Three.js -->
+    <script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
+
     <script>
         // Initialize Three.js scene
         var scene = new THREE.Scene();
@@ -45,9 +48,9 @@
         // Append renderer to the container
         document.getElementById('model-container').appendChild(renderer.domElement);
 
-        // Load 3D model from the same repository
+        // Load your custom 3D model (replace 'your_model.glb' with the actual path to your model)
         var loader = new THREE.GLTFLoader();
-        loader.load('lil.glb', function (gltf) {
+        loader.load('cube.glb', function (gltf) {
             // Add the loaded model to the scene
             scene.add(gltf.scene);
         });
@@ -59,19 +62,16 @@
         function animate() {
             requestAnimationFrame(animate);
 
-            // Rotate the model based on mouse position
-            if (scene.children.length > 0) {
-                scene.children[0].rotation.x += (window.innerHeight / 2 - event.clientY) * 0.0001;
-                scene.children[0].rotation.y += (window.innerWidth / 2 - event.clientX) * 0.0001;
-            }
+            // Rotate the model
+            scene.children.forEach(function (child) {
+                if (child.isMesh) {
+                    child.rotation.x += 0.01;
+                    child.rotation.y += 0.01;
+                }
+            });
 
             renderer.render(scene, camera);
         }
-
-        // Handle mouse movement
-        window.addEventListener('mousemove', function (event) {
-            animate();
-        });
 
         // Start the animation loop
         animate();
@@ -80,4 +80,3 @@
 </body>
 
 </html>
-
